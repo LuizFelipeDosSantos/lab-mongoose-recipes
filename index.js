@@ -25,7 +25,7 @@ mongoose
     dishType: "main_course",
     duration: 20,
     creator: "Nicolo"});
-})
+  })
   .then((createdRecipe) => {
     console.log('Created Recipe: ' + createdRecipe.title);
     //Iteration 3
