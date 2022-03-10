@@ -17,7 +17,8 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
-    /*const carbonara = new Recipe({
+    /*ITERATION 2
+    const carbonara = new Recipe({
       title: "Carbonara",
       level: "Easy Peasy",
       ingredients: ["eggs", "bacon", "cheese", "pasta"],
