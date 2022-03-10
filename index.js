@@ -40,7 +40,15 @@ mongoose
   .then((updatedRecipe) => {
     console.log('Updated Recipe: ' + updatedRecipe.title);
     //Iteration 5
+    return Recipe.deleteOne({title:"Carrot Cake"});
   })
+  .then((removedRecipe)=>{
+    console.log('Removed Recipe:' + removedRecipe.title);
+    
+  })
+
   .catch(error => {
     console.error('Error connecting to the database', error);
-  });
+  })
+  // Iteration 6
+  .finally(mongoose.connection.close());
