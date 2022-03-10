@@ -17,27 +17,30 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
-
-    //Iteration 2
-    const carbonara = new Recipe({
-      title: "Carbonara",
-      level: "Easy Peasy",
-      ingredients: ["eggs", "bacon", "cheese", "pasta"],
-      cuisine: "Italian",
-      dishType: "main_course",
-      duration: 20,
-      creator: "Nicolo" 
-    });
-  
-    carbonara.save();
-    console.log(carbonara.title);    
-
-    //Iteration 3
-    Recipe.insertMany(data);
-
-    //Iteration 4
-    Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100});
+   //Iteration 2
+    return Recipe.create({title: "Carbonara",
+    level: "Easy Peasy",
+    ingredients: ["eggs", "bacon", "cheese", "pasta"],
+    cuisine: "Italian",
+    dishType: "main_course",
+    duration: 20,
+    creator: "Nicolo"});
 })
+  .then((createdRecipe) => {
+    console.log('Created Recipe: ' + createdRecipe.title);
+    //Iteration 3
+    return Recipe.insertMany(data);
+  })
+  .then((recipes) => {
+    console.log('Inserted Recipes:');
+    recipes.forEach((recipe) => console.log(recipe.title));
+    //Iteration 4
+    return Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100});
+  })
+  .then((updatedRecipe) => {
+    console.log('Updated Recipe: ' + updatedRecipe.title);
+    //Iteration 5
+  })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
