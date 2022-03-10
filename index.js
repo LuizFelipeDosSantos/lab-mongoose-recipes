@@ -19,25 +19,37 @@ mongoose
     // Run your code here, after you have insured that the connection was made
 
     //Iteration 2
-    const carbonara = new Recipe({
-      title: "Carbonara",
-      level: "Easy Peasy",
-      ingredients: ["eggs", "bacon", "cheese", "pasta"],
-      cuisine: "Italian",
-      dishType: "main_course",
-      duration: 20,
-      creator: "Nicolo" 
-    });
-
-    carbonara.save();
-    console.log(carbonara.title);
+    createCarbonara();    
 
     //Iteration 3
-    Recipe.insertMany(data);
+    insertAllData(); 
 
     //Iteration 4
-    Recipe.findOneAndUpdate({title:"Rigatoni alla Genovese"},{duration: 100})
+    findAndUpdate();
 })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+async function createCarbonara() {
+  const carbonara = new Recipe({
+    title: "Carbonara",
+    level: "Easy Peasy",
+    ingredients: ["eggs", "bacon", "cheese", "pasta"],
+    cuisine: "Italian",
+    dishType: "main_course",
+    duration: 20,
+    creator: "Nicolo" 
+  });
+
+  await carbonara.save();
+  console.log(carbonara.title);
+}
+
+async function insertAllData() {
+  await Recipe.insertMany(data);
+}
+
+async function findAndUpdate() {
+  await Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {$set: {duration: 100}});
+}
