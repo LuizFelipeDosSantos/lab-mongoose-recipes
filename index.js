@@ -17,7 +17,8 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
-    /*ITERATION 2
+
+    //Iteration 2
     const carbonara = new Recipe({
       title: "Carbonara",
       level: "Easy Peasy",
@@ -29,7 +30,10 @@ mongoose
     });
 
     carbonara.save();
-    console.log(carbonara.title);*/
+    console.log(carbonara.title);
+
+    //Iteration 3
+    Recipe.insertMany(data);
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
