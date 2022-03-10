@@ -34,7 +34,10 @@ mongoose
 
     //Iteration 3
     Recipe.insertMany(data);
-  })
+
+    //Iteration 4
+    Recipe.findOneAndUpdate({title:"Rigatoni alla Genovese"},{duration: 100})
+})
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
